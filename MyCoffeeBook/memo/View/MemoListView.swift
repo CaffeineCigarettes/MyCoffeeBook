@@ -10,17 +10,16 @@ import SwiftUI
 struct MemoListView: View {
     private let gridItem = [GridItem(.flexible())]
     @State private var showingWriteMemo = false
+    @ObservedObject var viewModel = MemoListViewModel()
     var body: some View {
         NavigationView {
             ScrollView {
                 LazyVGrid(columns: gridItem,spacing: 16) {
-                    MemoView()
-                    MemoView()
-                    MemoView()
-                    MemoView()
-                    MemoView()
-                    MemoView()
-                    MemoView()
+                    ForEach(viewModel.memoList) { memo in
+                        MemoView(memo: memo)
+                            .padding(.trailing)
+                            .padding(.leading)
+                    }
                 }
                 .navigationTitle("Coffee")
                 .navigationBarTitleDisplayMode(.inline)

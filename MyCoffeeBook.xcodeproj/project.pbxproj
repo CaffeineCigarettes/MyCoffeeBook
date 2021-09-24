@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		6A2B851526FE149D006BE0F0 /* WriteMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2B851426FE149D006BE0F0 /* WriteMemoView.swift */; };
 		6A2B851726FE14D2006BE0F0 /* StarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2B851626FE14D2006BE0F0 /* StarView.swift */; };
+		6A2B851D26FE1A07006BE0F0 /* MemoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2B851C26FE1A07006BE0F0 /* MemoListViewModel.swift */; };
+		6A2B852026FE1A62006BE0F0 /* MemoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2B851F26FE1A62006BE0F0 /* MemoModel.swift */; };
+		6A2B852226FE1B06006BE0F0 /* MemoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2B852126FE1B06006BE0F0 /* MemoListModel.swift */; };
+		6A2B852626FE2821006BE0F0 /* MemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2B852526FE2821006BE0F0 /* MemoViewModel.swift */; };
 		6A36ED5E26FE123500D53AF6 /* MyCoffeeBookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A36ED5D26FE123500D53AF6 /* MyCoffeeBookApp.swift */; };
 		6A36ED6026FE123500D53AF6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A36ED5F26FE123500D53AF6 /* ContentView.swift */; };
 		6A36ED6226FE123800D53AF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A36ED6126FE123800D53AF6 /* Assets.xcassets */; };
@@ -20,6 +24,10 @@
 /* Begin PBXFileReference section */
 		6A2B851426FE149D006BE0F0 /* WriteMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteMemoView.swift; sourceTree = "<group>"; };
 		6A2B851626FE14D2006BE0F0 /* StarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarView.swift; sourceTree = "<group>"; };
+		6A2B851C26FE1A07006BE0F0 /* MemoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MemoListViewModel.swift; path = ../View/MemoListViewModel.swift; sourceTree = "<group>"; };
+		6A2B851F26FE1A62006BE0F0 /* MemoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoModel.swift; sourceTree = "<group>"; };
+		6A2B852126FE1B06006BE0F0 /* MemoListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListModel.swift; sourceTree = "<group>"; };
+		6A2B852526FE2821006BE0F0 /* MemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewModel.swift; sourceTree = "<group>"; };
 		6A36ED5A26FE123500D53AF6 /* MyCoffeeBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyCoffeeBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A36ED5D26FE123500D53AF6 /* MyCoffeeBookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCoffeeBookApp.swift; sourceTree = "<group>"; };
 		6A36ED5F26FE123500D53AF6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -40,6 +48,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A2B851826FE194D006BE0F0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6A36ED6D26FE135900D53AF6 /* MemoListView.swift */,
+				6A36ED6F26FE136800D53AF6 /* MemoView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6A2B851926FE198E006BE0F0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6A2B851C26FE1A07006BE0F0 /* MemoListViewModel.swift */,
+				6A2B852526FE2821006BE0F0 /* MemoViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		6A2B851E26FE1A2F006BE0F0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6A2B851F26FE1A62006BE0F0 /* MemoModel.swift */,
+				6A2B852126FE1B06006BE0F0 /* MemoListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		6A36ED5126FE123500D53AF6 = {
 			isa = PBXGroup;
 			children = (
@@ -80,8 +115,9 @@
 		6A36ED6B26FE132700D53AF6 /* memo */ = {
 			isa = PBXGroup;
 			children = (
-				6A36ED6D26FE135900D53AF6 /* MemoListView.swift */,
-				6A36ED6F26FE136800D53AF6 /* MemoView.swift */,
+				6A2B851826FE194D006BE0F0 /* View */,
+				6A2B851926FE198E006BE0F0 /* ViewModel */,
+				6A2B851E26FE1A2F006BE0F0 /* Model */,
 			);
 			path = memo;
 			sourceTree = "<group>";
@@ -166,11 +202,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A2B851726FE14D2006BE0F0 /* StarView.swift in Sources */,
+				6A2B852026FE1A62006BE0F0 /* MemoModel.swift in Sources */,
+				6A2B852626FE2821006BE0F0 /* MemoViewModel.swift in Sources */,
 				6A36ED6026FE123500D53AF6 /* ContentView.swift in Sources */,
 				6A36ED5E26FE123500D53AF6 /* MyCoffeeBookApp.swift in Sources */,
 				6A2B851526FE149D006BE0F0 /* WriteMemoView.swift in Sources */,
 				6A36ED7026FE136800D53AF6 /* MemoView.swift in Sources */,
+				6A2B851D26FE1A07006BE0F0 /* MemoListViewModel.swift in Sources */,
 				6A36ED6E26FE135900D53AF6 /* MemoListView.swift in Sources */,
+				6A2B852226FE1B06006BE0F0 /* MemoListModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

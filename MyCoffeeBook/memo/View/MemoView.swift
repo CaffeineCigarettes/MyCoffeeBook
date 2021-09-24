@@ -8,22 +8,26 @@
 import SwiftUI
 
 struct MemoView: View {
+    var viewModel: MemoViewModel
+    init(memo: MemoModel){
+        self.viewModel = MemoViewModel(memo: memo)
+    }
     var body: some View {
         VStack{
             HStack{
-                Text("コロンビア")
+                Text(viewModel.memo.name)
                     .font(.system(.title, design: .rounded))
                     .font(.title)
                 Spacer()
             }
             HStack{
                 Spacer()
-                Text("KALDI")
+                Text(viewModel.memo.saler)
                     .italic()
             }
             HStack{
                 Text("酸")
-                Text("☆☆☆☆☆")
+                Text(viewModel.setStar(viewModel.memo.astringency))
                     .foregroundColor(Color.yellow)
                 Text("苦")
                 Spacer()
@@ -31,7 +35,7 @@ struct MemoView: View {
             .padding(.leading)
             HStack{
                 Text("軽")
-                Text("☆☆☆☆☆")
+                Text(viewModel.setStar(viewModel.memo.taste))
                     .foregroundColor(Color.yellow)
                 Text("重")
                 Spacer()
@@ -39,7 +43,7 @@ struct MemoView: View {
             .padding(.leading)
             HStack{
                 Text("浅")
-                Text("☆☆☆☆☆")
+                Text(viewModel.setStar(viewModel.memo.roast))
                     .foregroundColor(Color.yellow)
                 Text("深")
                 Spacer()
@@ -56,6 +60,7 @@ struct MemoView: View {
 
 struct MemoView_Previews: PreviewProvider {
     static var previews: some View {
-        MemoView()
+        let memo = MemoModel(id: 0, name: "コロンビア", saler: "KL", astringency: 0, taste: 1, roast: 2)
+        MemoView(memo: memo)
     }
 }
