@@ -7,10 +7,9 @@
 
 import Foundation
 class MemoListViewModel: ObservableObject {
-    let memoListModel: MemoListModel = MemoListModel()
-    @Published var memoList: [MemoModel]
+    @Published var memoList: [MemoModel] = []
     init(){
-        self.memoList = memoListModel.get()
+        setMemoList()
     }
     func setStar(StarInt: Int) -> String{
         var stars: [String] = ["☆","☆","☆","☆","☆"]
@@ -18,5 +17,8 @@ class MemoListViewModel: ObservableObject {
             stars[i] = "★"
         }
         return stars.joined()
+    }
+    func setMemoList() {
+        self.memoList = MemoListModel.shared.get()
     }
 }

@@ -51,7 +51,7 @@ struct MemoView: View {
             .padding(.leading)
             HStack{
                 Spacer()
-                Text("2021/1/1")
+                Text(viewModel.memo.date, style: .date)
                     .underline()
             }
         }
@@ -60,7 +60,7 @@ struct MemoView: View {
 
 struct MemoView_Previews: PreviewProvider {
     static var previews: some View {
-        let memo = MemoModel(id: 0, name: "コロンビア", saler: "KL", astringency: 0, taste: 1, roast: 2)
+        let memo = MemoModel(id: 0, name: "コロンビア", saler: "KL", astringency: 0, taste: 1, roast: 2,date: Date())
         MemoView(memo: memo)
     }
 }

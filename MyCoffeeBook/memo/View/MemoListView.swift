@@ -21,7 +21,7 @@ struct MemoListView: View {
                             .padding(.leading)
                     }
                 }
-                .navigationTitle("Coffee")
+                .navigationTitle("Coffee Book")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -36,7 +36,9 @@ struct MemoListView: View {
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .sheet(isPresented: $showingWriteMemo) {
+        .sheet(isPresented: $showingWriteMemo, onDismiss: {
+            viewModel.setMemoList()
+        }) {
             WriteMemoView()
         }
     }
