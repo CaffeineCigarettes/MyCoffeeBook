@@ -16,9 +16,11 @@ struct MemoListView: View {
             ScrollView {
                 LazyVGrid(columns: gridItem,spacing: 16) {
                     ForEach(viewModel.memoList, id: \.id) { memo in
-                        MemoView(memo: memo)
-                            .padding(.trailing)
-                            .padding(.leading)
+                        NavigationLink(destination: DeteilMemoView(memo: memo)) {
+                            MemoView(memo: memo)
+                                .padding(.trailing)
+                                .padding(.leading)
+                        }
                     }
                 }
                 .navigationTitle("Coffee Book")

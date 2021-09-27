@@ -14,7 +14,7 @@ class MemoListModel {
     let realm = try! Realm()
     var realmCount = 0
     private init(){
-        realmDelete()
+        //realmDelete()
     }
     func get() -> [MemoModel] {
         let memo1 = realm.objects(MemoModel.self)

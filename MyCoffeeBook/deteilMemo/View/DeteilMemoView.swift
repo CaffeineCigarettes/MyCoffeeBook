@@ -8,13 +8,35 @@
 import SwiftUI
 
 struct DeteilMemoView: View {
+    var memo: MemoModel
+    init(memo: MemoModel) {
+        self.memo = memo
+    }
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            GeometryReader { geometry in
+                VStack {
+                    MemoView(memo: self.memo)
+                        .padding(.top, 80)
+                        .frame(width: geometry.size.width / 0.9)
+                    HStack {
+                        Text("memo")
+                            .font(.title)
+                        Spacer()
+                    }
+                    .padding(.top, 10)
+                    Text("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                        .padding(.top, 10)
+                        .frame(width: geometry.size.width / 0.9)
+                }
+            }
+        }
     }
 }
 
 struct DeteilMemoView_Previews: PreviewProvider {
     static var previews: some View {
-        DeteilMemoView()
+        let memo = MemoModel()
+        DeteilMemoView(memo: memo)
     }
 }

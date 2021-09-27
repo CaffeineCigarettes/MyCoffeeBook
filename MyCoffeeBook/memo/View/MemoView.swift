@@ -18,34 +18,42 @@ struct MemoView: View {
                 Text(viewModel.memo.name)
                     .font(.system(.title, design: .rounded))
                     .font(.title)
+                    .foregroundColor(.black)
                 Spacer()
             }
             HStack{
                 Spacer()
                 Text(viewModel.memo.saler)
                     .italic()
+                    .foregroundColor(.black)
             }
             HStack{
                 Text("酸")
+                    .foregroundColor(.black)
                 Text(viewModel.setStar(viewModel.memo.astringency))
                     .foregroundColor(Color.yellow)
                 Text("苦")
+                    .foregroundColor(.black)
                 Spacer()
             }
             .padding(.leading)
             HStack{
                 Text("軽")
+                    .foregroundColor(.black)
                 Text(viewModel.setStar(viewModel.memo.taste))
                     .foregroundColor(Color.yellow)
                 Text("重")
+                    .foregroundColor(.black)
                 Spacer()
             }
             .padding(.leading)
             HStack{
                 Text("浅")
+                    .foregroundColor(.black)
                 Text(viewModel.setStar(viewModel.memo.roast))
                     .foregroundColor(Color.yellow)
                 Text("深")
+                    .foregroundColor(.black)
                 Spacer()
             }
             .padding(.leading)
@@ -53,6 +61,7 @@ struct MemoView: View {
                 Spacer()
                 Text(viewModel.memo.date, style: .date)
                     .underline()
+                    .foregroundColor(.black)
             }
         }
     }
@@ -60,7 +69,6 @@ struct MemoView: View {
 
 struct MemoView_Previews: PreviewProvider {
     static var previews: some View {
-        //let memo = MemoModel(id: 0, name: "コロンビア", saler: "KL", astringency: 0, taste: 1, roast: 2,date: Date())
         let memo = MemoModel()
         MemoView(memo: memo)
     }
