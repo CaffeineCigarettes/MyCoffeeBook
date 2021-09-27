@@ -60,7 +60,8 @@ struct MemoView: View {
 
 struct MemoView_Previews: PreviewProvider {
     static var previews: some View {
-        let memo = MemoModel(id: 0, name: "コロンビア", saler: "KL", astringency: 0, taste: 1, roast: 2,date: Date())
+        //let memo = MemoModel(id: 0, name: "コロンビア", saler: "KL", astringency: 0, taste: 1, roast: 2,date: Date())
+        let memo = MemoModel()
         MemoView(memo: memo)
     }
 }

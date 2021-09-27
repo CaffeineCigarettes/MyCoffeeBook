@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 class MemoListViewModel: ObservableObject {
     @Published var memoList: [MemoModel] = []
     init(){

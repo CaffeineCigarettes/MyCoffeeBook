@@ -72,7 +72,7 @@ struct WriteMemoView: View {
             Group{
                 HStack{
                     Text("酸")
-                    ForEach($astViewModel.stars.indices, id: \.self) { starIndex in
+                    ForEach(0 ..< $astViewModel.stars.count, id: \.self) { starIndex in
                         Button(action: {
                             astViewModel.tap(starIndex: starIndex)
                         }) {
@@ -88,7 +88,7 @@ struct WriteMemoView: View {
             Group{
                 HStack{
                 Text("軽")
-                ForEach($tasteViewModel.stars.indices, id: \.self) { starIndex in
+                    ForEach(0 ..< $tasteViewModel.stars.count, id: \.self) { starIndex in
                     Button(action: {
                         tasteViewModel.tap(starIndex: starIndex)
                     }) {
@@ -104,7 +104,7 @@ struct WriteMemoView: View {
             Group{
                 HStack{
                 Text("浅")
-                    ForEach($roastViewModel.stars.indices, id: \.self) { starIndex in
+                    ForEach(0 ..< $roastViewModel.stars.count, id: \.self) { starIndex in
                         Button(action: {
                             roastViewModel.tap(starIndex: starIndex)
                         }) {
