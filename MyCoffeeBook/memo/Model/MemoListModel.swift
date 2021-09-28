@@ -26,7 +26,7 @@ class MemoListModel {
     func set(memo: MemoModel) {
         memo.id = self.realmCount
         try! realm.write {
-            realm.add(memo)
+            realm.add(memo, update: .modified)
         }
         self.realmCount += 1
     }
