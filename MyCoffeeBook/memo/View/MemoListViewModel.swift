@@ -7,10 +7,10 @@
 
 import Foundation
 
-class MemoListViewModel {
-    var memoList: [MemoModel] = []
+class MemoListViewModel: ObservableObject {
+    @Published var memoList: [MemoModel] = []
     init(){
-        setMemoList()
+        set()
     }
     func setStar(StarInt: Int) -> String{
         var stars: [String] = ["☆","☆","☆","☆","☆"]
@@ -19,7 +19,17 @@ class MemoListViewModel {
         }
         return stars.joined()
     }
-    func setMemoList() {
+    func set() {
         self.memoList = MemoListModel.shared.get()
+    }
+    func remove(offset: IndexSet) {
+        let id = memoList[offset.last!].id
+        do {
+            self.memoList = []
+            MemoListModel.shared.delete(id: id)
+            set()
+        }
+        MemoListModel.shared.delete(id: id)
+        
     }
 }

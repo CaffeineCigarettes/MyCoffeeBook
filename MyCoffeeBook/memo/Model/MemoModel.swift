@@ -18,16 +18,6 @@ protocol MemoProtocol {
     var date: Date { set get }
 }
 
-struct MemoModel111: MemoProtocol{
-    var id: Int
-    var name: String
-    var saler: String
-    var astringency: Int
-    var taste: Int
-    var roast: Int
-    var date: Date
-}
-
 class MemoModel: Object, MemoProtocol, Identifiable {
     @objc dynamic var id: Int = 0
     @objc dynamic var name: String = ""
@@ -35,6 +25,7 @@ class MemoModel: Object, MemoProtocol, Identifiable {
     @objc dynamic var astringency: Int = 0
     @objc dynamic var taste: Int = 0
     @objc dynamic var roast: Int = 0
+    @objc dynamic var review: String = ""
     @objc dynamic var date: Date = Date()
     
     override static func primaryKey() -> String? {

@@ -6,20 +6,22 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct MemoListView: View {
     private let gridItem = [GridItem(.flexible())]
     @State private var showingWriteMemo = false
     @State var searchTextEntered: String = ""
-    let viewModel = MemoListViewModel()
+    @ObservedObject var viewModel = MemoListViewModel()
     var body: some View {
         NavigationView {
-            List(searchResults) { MemoModel in
-                NavigationLink(destination: DeteilMemoView(memo: MemoModel)) {
-                    MemoView(memo: MemoModel)
-                        .padding(.trailing)
-                        .padding(.leading)
+            List {
+                ForEach(searchResults) { MemoModel in
+                    NavigationLink(destination: DeteilMemoView(memo: MemoModel)) {
+                        MemoView(memo: MemoModel)
+                    }
                 }
+                .onDelete(perform: viewModel.remove)
             }
             .searchable(text: $searchTextEntered)
             .navigationTitle("Coffee Book")
@@ -37,7 +39,7 @@ struct MemoListView: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .sheet(isPresented: $showingWriteMemo, onDismiss: {
-            viewModel.setMemoList()
+            viewModel.set()
         }) {
             WriteMemoView()
         }

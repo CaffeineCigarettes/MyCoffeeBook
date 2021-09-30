@@ -14,7 +14,7 @@ class MemoListModel {
     let realm = try! Realm()
     var realmCount = 0
     private init(){
-        //realmDelete()
+        //allDelete()
     }
     func get() -> [MemoModel] {
         let memo1 = realm.objects(MemoModel.self)
@@ -30,7 +30,17 @@ class MemoListModel {
         }
         self.realmCount += 1
     }
-    func realmDelete() {
+    func delete(id: Int) {
+        let deleteTarget = realm.objects(MemoModel.self).filter("id == \(id)")
+        do{
+          try realm.write{
+              realm.delete(deleteTarget)
+          }
+        }catch {
+          print("Error \(error)")
+        }
+    }
+    func allDelete() {
         try! realm.write {
             realm.deleteAll()
         }

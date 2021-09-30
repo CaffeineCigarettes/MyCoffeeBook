@@ -26,7 +26,7 @@ struct DeteilMemoView: View {
                         Spacer()
                     }
                     .padding(.top, 10)
-                    Text("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                    Text(memo.review)
                         .padding(.top, 10)
                         .frame(width: geometry.size.width / 1.1)
                 }
