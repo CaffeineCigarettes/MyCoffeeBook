@@ -17,7 +17,9 @@ struct MemoListView: View {
         NavigationView {
             List {
                 ForEach(searchResults) { MemoModel in
-                    NavigationLink(destination: DeteilMemoView(memo: MemoModel)) {
+                    NavigationLink(destination: DeteilMemoView(memo: MemoModel).onDisappear(perform: {
+                        viewModel.set()
+                    })) {
                         MemoView(memo: MemoModel)
                     }
                 }

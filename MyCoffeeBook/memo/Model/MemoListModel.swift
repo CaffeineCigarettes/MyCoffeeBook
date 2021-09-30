@@ -31,13 +31,15 @@ class MemoListModel {
         self.realmCount += 1
     }
     func delete(id: Int) {
-        let deleteTarget = realm.objects(MemoModel.self).filter("id == \(id)")
-        do{
-          try realm.write{
-              realm.delete(deleteTarget)
+          try! realm.write {
+              let target = realm.objects(MemoModel.self).filter("id == \(id)")
+              realm.delete(target)
           }
-        }catch {
-          print("Error \(error)")
+    }
+    func updateReview(id: Int, review: String) {
+        try! realm.write {
+            let target = realm.objects(MemoModel.self).filter("id == \(id)")
+            target[0].review = review
         }
     }
     func allDelete() {

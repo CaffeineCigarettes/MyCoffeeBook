@@ -10,13 +10,14 @@ import CoreImage
 class StarViewModel: ObservableObject {
     @Published var stars: [Bool] = [false, false, false, false, false]
     func tap(starIndex: Int) {
-        if stars[starIndex] == false {
+        switch stars[starIndex] {
+        case true:
+            crean()
+        case false:
             crean()
             for i in 0 ... starIndex {
                 stars[i] = true
             }
-        }else if stars[starIndex] == true {
-            crean()
         }
     }
     func crean(){

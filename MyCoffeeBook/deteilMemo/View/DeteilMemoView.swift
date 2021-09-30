@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct DeteilMemoView: View {
+    @State var text: String
+    @State var review: String
     var memo: MemoModel
     init(memo: MemoModel) {
         self.memo = memo
+        self.text = memo.review
+        self.review = memo.review
     }
     var body: some View {
         VStack {
@@ -24,13 +28,30 @@ struct DeteilMemoView: View {
                             .font(.title)
                             .padding(.leading)
                         Spacer()
+                        
+                        Button(action: {
+                            MemoListModel.shared.updateReview(id: memo.id, review: text)
+                            review = text
+                        }) {
+                            Text("+")
+                                .padding(.trailing, 20)
+                                .font(.title)
+                                .foregroundColor(buttonColor)
+                        }
                     }
                     .padding(.top, 10)
-                    Text(memo.review)
+                    TextEditor(text: $text)
                         .padding(.top, 10)
                         .frame(width: geometry.size.width / 1.1)
                 }
             }
+        }
+    }
+    var buttonColor: Color {
+        if text != review {
+            return Color.blue
+        } else {
+            return Color.gray
         }
     }
 }
