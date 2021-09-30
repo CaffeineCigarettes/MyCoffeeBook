@@ -6,21 +6,18 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct DeteilMemoView: View {
-    @State var text: String
-    @State var review: String
-    var memo: MemoModel
+    @ObservedObject var viewModel: DeteilMemoViewModel
     init(memo: MemoModel) {
-        self.memo = memo
-        self.text = memo.review
-        self.review = memo.review
+        self.viewModel = DeteilMemoViewModel(memo: memo)
     }
     var body: some View {
         VStack {
             GeometryReader { geometry in
                 VStack {
-                    MemoView(memo: self.memo)
+                    MemoView(memo: viewModel.memo)
                         .padding(.top, 80)
                         .frame(width: geometry.size.width / 1.1)
                     HStack {
@@ -30,8 +27,7 @@ struct DeteilMemoView: View {
                         Spacer()
                         
                         Button(action: {
-                            MemoListModel.shared.updateReview(id: memo.id, review: text)
-                            review = text
+                            viewModel.updateReview()
                         }) {
                             Text("+")
                                 .padding(.trailing, 20)
@@ -40,7 +36,7 @@ struct DeteilMemoView: View {
                         }
                     }
                     .padding(.top, 10)
-                    TextEditor(text: $text)
+                    TextEditor(text: $viewModel.review)
                         .padding(.top, 10)
                         .frame(width: geometry.size.width / 1.1)
                 }
@@ -48,7 +44,7 @@ struct DeteilMemoView: View {
         }
     }
     var buttonColor: Color {
-        if text != review {
+        if viewModel.review != viewModel.oldReview {
             return Color.blue
         } else {
             return Color.gray
