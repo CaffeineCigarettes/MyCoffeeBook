@@ -18,16 +18,17 @@ struct DeteilMemoView: View {
                 VStack {
                     MemoView(memo: self.memo)
                         .padding(.top, 80)
-                        .frame(width: geometry.size.width / 0.9)
+                        .frame(width: geometry.size.width / 1.1)
                     HStack {
                         Text("memo")
                             .font(.title)
+                            .padding(.leading)
                         Spacer()
                     }
                     .padding(.top, 10)
                     Text("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                         .padding(.top, 10)
-                        .frame(width: geometry.size.width / 0.9)
+                        .frame(width: geometry.size.width / 1.1)
                 }
             }
         }

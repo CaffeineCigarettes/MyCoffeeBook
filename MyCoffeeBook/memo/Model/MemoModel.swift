@@ -28,7 +28,7 @@ struct MemoModel111: MemoProtocol{
     var date: Date
 }
 
-class MemoModel: Object, MemoProtocol {
+class MemoModel: Object, MemoProtocol, Identifiable {
     @objc dynamic var id: Int = 0
     @objc dynamic var name: String = ""
     @objc dynamic var saler: String = ""

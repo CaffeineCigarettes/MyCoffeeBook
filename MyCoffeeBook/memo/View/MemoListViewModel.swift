@@ -7,8 +7,8 @@
 
 import Foundation
 
-class MemoListViewModel: ObservableObject {
-    @Published var memoList: [MemoModel] = []
+class MemoListViewModel {
+    var memoList: [MemoModel] = []
     init(){
         setMemoList()
     }

@@ -10,29 +10,27 @@ import SwiftUI
 struct MemoListView: View {
     private let gridItem = [GridItem(.flexible())]
     @State private var showingWriteMemo = false
-    @ObservedObject var viewModel = MemoListViewModel()
+    @State var searchTextEntered: String = ""
+    let viewModel = MemoListViewModel()
     var body: some View {
         NavigationView {
-            ScrollView {
-                LazyVGrid(columns: gridItem,spacing: 16) {
-                    ForEach(viewModel.memoList, id: \.id) { memo in
-                        NavigationLink(destination: DeteilMemoView(memo: memo)) {
-                            MemoView(memo: memo)
-                                .padding(.trailing)
-                                .padding(.leading)
-                        }
-                    }
+            List(searchResults) { MemoModel in
+                NavigationLink(destination: DeteilMemoView(memo: MemoModel)) {
+                    MemoView(memo: MemoModel)
+                        .padding(.trailing)
+                        .padding(.leading)
                 }
-                .navigationTitle("Coffee Book")
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action: {
-                            self.showingWriteMemo = true
-                        }) {
-                            Text("+")
-                                .font(.title)
-                        }
+            }
+            .searchable(text: $searchTextEntered)
+            .navigationTitle("Coffee Book")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        self.showingWriteMemo = true
+                    }) {
+                        Text("+")
+                            .font(.title)
                     }
                 }
             }
@@ -44,6 +42,13 @@ struct MemoListView: View {
             WriteMemoView()
         }
     }
+    var searchResults: [MemoModel] {
+            if searchTextEntered.isEmpty {
+                return viewModel.memoList
+            } else {
+                return viewModel.memoList.filter { $0.name.contains(searchTextEntered) }
+            }
+        }
 }
 
 struct MemoListView_Previews: PreviewProvider {
