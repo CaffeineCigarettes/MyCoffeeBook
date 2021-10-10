@@ -18,42 +18,42 @@ struct MemoView: View {
                 Text(viewModel.memo.name)
                     .font(.system(.title, design: .rounded))
                     .font(.title)
-                    .foregroundColor(.black)
+                    .foregroundColor(Color("TextColor"))
                 Spacer()
             }
             HStack{
                 Spacer()
                 Text(viewModel.memo.saler)
                     .italic()
-                    .foregroundColor(.black)
+                    .foregroundColor(Color("TextColor"))
             }
             HStack{
                 Text("酸")
-                    .foregroundColor(.black)
+                    .foregroundColor(Color("TextColor"))
                 Text(viewModel.setStar(viewModel.memo.astringency))
                     .foregroundColor(Color.yellow)
                 Text("苦")
-                    .foregroundColor(.black)
+                    .foregroundColor(Color("TextColor"))
                 Spacer()
             }
             .padding(.leading)
             HStack{
                 Text("軽")
-                    .foregroundColor(.black)
+                    .foregroundColor(Color("TextColor"))
                 Text(viewModel.setStar(viewModel.memo.taste))
                     .foregroundColor(Color.yellow)
                 Text("重")
-                    .foregroundColor(.black)
+                    .foregroundColor(Color("TextColor"))
                 Spacer()
             }
             .padding(.leading)
             HStack{
                 Text("浅")
-                    .foregroundColor(.black)
+                    .foregroundColor(Color("TextColor"))
                 Text(viewModel.setStar(viewModel.memo.roast))
                     .foregroundColor(Color.yellow)
                 Text("深")
-                    .foregroundColor(.black)
+                    .foregroundColor(Color("TextColor"))
                 Spacer()
             }
             .padding(.leading)
@@ -61,7 +61,7 @@ struct MemoView: View {
                 Spacer()
                 Text(viewModel.memo.date, style: .date)
                     .underline()
-                    .foregroundColor(.black)
+                    .foregroundColor(Color("TextColor"))
             }
         }
     }

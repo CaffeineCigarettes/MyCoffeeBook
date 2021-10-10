@@ -12,11 +12,11 @@ struct MemoListView: View {
     private let gridItem = [GridItem(.flexible())]
     @State private var showingWriteMemo = false
     @State var searchTextEntered: String = ""
-    @ObservedObject var viewModel = MemoListViewModel()
+    @StateObject var viewModel = MemoListViewModel()
     var body: some View {
         NavigationView {
             List {
-                ForEach(searchResults) { MemoModel in
+                ForEach(searchResults.reversed()) { MemoModel in
                     NavigationLink(destination: DeteilMemoView(memo: MemoModel).onDisappear(perform: {
                         viewModel.set()
                     })) {

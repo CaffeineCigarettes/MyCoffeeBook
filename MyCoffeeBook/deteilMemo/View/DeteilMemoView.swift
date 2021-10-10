@@ -21,24 +21,25 @@ struct DeteilMemoView: View {
                         .padding(.top, 80)
                         .frame(width: geometry.size.width / 1.1)
                     HStack {
-                        Text("memo")
+                        Text("Memo")
                             .font(.title)
                             .padding(.leading)
-                        Spacer()
-                        
+                        Spacer() 
                         Button(action: {
                             viewModel.updateReview()
                         }) {
                             Text("+")
-                                .padding(.trailing, 20)
+                                .padding(.trailing, 50)
                                 .font(.title)
                                 .foregroundColor(buttonColor)
                         }
                     }
                     .padding(.top, 10)
-                    TextEditor(text: $viewModel.review)
-                        .padding(.top, 10)
-                        .frame(width: geometry.size.width / 1.1)
+                    List {
+                        TextEditor(text: $viewModel.review)
+                            .lineLimit(nil)
+                            .frame(height: 200)
+                    }
                 }
             }
         }

@@ -3,8 +3,8 @@
 //  MyCoffeeBook
 //
 //  Created by nekuro on 2021/09/24.
-//
 
+import Foundation
 import SwiftUI
 
 struct WriteMemoView: View {
@@ -24,32 +24,20 @@ struct WriteMemoView: View {
                     viewModel.makeMemo(ast: astViewModel.get(), taste: tasteViewModel.get(), roast: roastViewModel.get())
                     self.presentationMode.wrappedValue.dismiss()
                 }) {
-                    Text("add")
+                    Text("+")
                         .font(.title)
                         .padding(.trailing)
+                        .padding(.top, 50)
                 }
             }
+            
             TextField("  Name", text: $viewModel.coffeeName)
                 .font(.title)
                 .padding(.leading)
-                //.padding(.top, 150)
                 .focused($isCoffeeNameFocused)
                 .keyboardType(.default)
-                .toolbar{
-                    ToolbarItemGroup(placement: .keyboard) {
-                        HStack {
-                            Button("Clear textfield") {
-                                self.viewModel.coffeeName = ""
-                            }
-                            Spacer()
-                            Button("Done") {
-                                self.isCoffeeNameFocused = false
-                            }
-                        }
-                    }
-                }
             Divider()
-                .background(Color.green)
+                .background(Color("TextFrame"))
             TextField("  Store", text: $viewModel.saler)
                 .font(.title)
                 .padding(.leading)
@@ -68,7 +56,7 @@ struct WriteMemoView: View {
                 }
             }
             Divider()
-                .background(Color.green)
+                .background(Color("TextFrame"))
             Group{
                 HStack{
                     Text("酸")
@@ -118,13 +106,20 @@ struct WriteMemoView: View {
                 }
             .padding(.bottom)
             TextEditor(text: self.$viewModel.coffeeReview)
-                .frame(width: 280, height: 200)
-                .border(Color.green, width: 0.5)
+                .frame(height: 200)
+                .border(Color("TextFrame"), width: 0.5)
                 .padding()
                 .foregroundColor(.gray)
         }
     }
 }
+
+extension UIApplication {
+    func closeKeyboard() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+
 
 struct WriteMemoView_Previews: PreviewProvider {
     static var previews: some View {

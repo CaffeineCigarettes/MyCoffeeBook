@@ -9,6 +9,7 @@ import Foundation
 
 class MemoListViewModel: ObservableObject {
     @Published var memoList: [MemoModel] = []
+    //@Published var sortList: SortType
     init(){
         set()
     }
@@ -32,4 +33,10 @@ class MemoListViewModel: ObservableObject {
         MemoListModel.shared.delete(id: id)
         
     }
+}
+enum SortType {
+    //昇順
+    case ascending
+    //降順
+    case descending
 }

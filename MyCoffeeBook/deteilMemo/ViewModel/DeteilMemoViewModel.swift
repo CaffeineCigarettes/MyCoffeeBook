@@ -20,3 +20,4 @@ class DeteilMemoViewModel: ObservableObject {
         oldReview = review
     }
 }
+
