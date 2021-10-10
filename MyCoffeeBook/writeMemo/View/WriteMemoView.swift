@@ -42,19 +42,6 @@ struct WriteMemoView: View {
                 .font(.title)
                 .padding(.leading)
                 .focused($isCoffeeNameFocused)
-                .toolbar{
-                ToolbarItemGroup(placement: .keyboard) {
-                    HStack {
-                        Button("Clear textfield") {
-                            self.viewModel.saler = ""
-                        }
-                        Spacer()
-                        Button("Done") {
-                            self.isCoffeeNameFocused = false
-                        }
-                    }
-                }
-            }
             Divider()
                 .background(Color("TextFrame"))
             Group{
